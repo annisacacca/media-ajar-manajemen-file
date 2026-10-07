@@ -1,0 +1,7 @@
+/* src/components/sections/MateriC/MateriC.css */
+.materi-c__cols { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.materi-c__cols h3 { font-size: var(--fs-lead); }
+.materi-c__stack { display: grid; gap: var(--space-3); }
+.materi-c__note { margin: 0 0 var(--space-4); font-weight: 500; font-size: calc(var(--fs-body) * 0.95); }
+.materi-c__traits { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.materi-c__traits li { padding: var(--space-3) var(--space-4); background: var(--ice); border: 3px solid var(--ink); border-radius: 10px; font-size: var(--fs-body); }

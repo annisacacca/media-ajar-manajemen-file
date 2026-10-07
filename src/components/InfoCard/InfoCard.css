@@ -1,0 +1,16 @@
+/* src/components/InfoCard/InfoCard.css */
+.icard {
+  --tone: var(--blue);
+  background: var(--paper);
+  border: var(--border);
+  border-top: 12px solid var(--tone);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard-sm);
+  padding: var(--space-4);
+}
+.icard--yellow { --tone: var(--yellow); }
+.icard--green { --tone: var(--green); }
+.icard--red { --tone: var(--red); }
+.icard__title { margin: 0 0 var(--space-2); font-size: calc(var(--fs-body) * 1.05); }
+.icard__body { font-size: calc(var(--fs-body) * 0.85); }
+.icard__body > :last-child { margin-bottom: 0; }

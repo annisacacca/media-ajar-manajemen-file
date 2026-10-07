@@ -1,0 +1,3 @@
+/* src/components/sections/MateriB/MateriB.css */
+.materi-b__defs { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.materi-b__examples { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-3); }

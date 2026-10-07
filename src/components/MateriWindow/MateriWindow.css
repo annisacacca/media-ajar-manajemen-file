@@ -1,0 +1,3 @@
+/* src/components/MateriWindow/MateriWindow.css */
+.mw__heading { margin-bottom: var(--space-2); }
+.mw__lead { margin-bottom: var(--space-5); font-size: var(--fs-body); line-height: 1.4; }

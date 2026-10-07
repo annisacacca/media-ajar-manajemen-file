@@ -1,0 +1,15 @@
+/* src/components/StarBurst/StarBurst.css */
+.burst { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; z-index: 5; }
+.burst__star {
+  position: absolute;
+  left: -13px;
+  top: -13px;
+  opacity: 0;
+  animation: burst-fly 0.9s ease-out;
+}
+/* Bintang terbang keluar dari pusat sesuai sudut --a, membesar lalu menghilang */
+@keyframes burst-fly {
+  0% { opacity: 1; transform: rotate(var(--a)) translateY(0) scale(0.4); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(var(--a)) translateY(calc(-90px - var(--d))) scale(1.1); }
+}

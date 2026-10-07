@@ -1,0 +1,91 @@
+/* src/components/sections/KuisSection/KuisSection.css */
+.kuis { display: grid; gap: var(--space-5); }
+
+/* ----- Penanda kemajuan ----- */
+.kuis__steps { display: flex; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.kuis__step {
+  flex: 1; display: grid; place-items: center; padding: 0.15em 0;
+  background: var(--white); border: var(--border); border-radius: 999px;
+  font-family: var(--font-pixel); font-weight: 700; font-size: calc(var(--fs-body) * 0.85);
+  transition: background 0.25s;
+}
+.kuis__step[data-state='now'] { background: var(--yellow); }
+.kuis__step[data-state='right'] { background: var(--green); }
+.kuis__step[data-state='wrong'] { background: var(--blush); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ----- Tata letak ----- */
+.kuis__grid { display: grid; gap: var(--space-5); align-items: start; }
+@media (min-width: 900px) { .kuis__grid { grid-template-columns: minmax(200px, 270px) 1fr; } }
+
+.kuis__dika { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
+.kuis__mascot { position: relative; }
+.kuis__mascot .dika svg { max-width: 100%; height: auto; }
+.kuis__bubble {
+  position: relative; margin: 0; padding: var(--space-3) var(--space-4);
+  background: var(--yellow); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm);
+  font-family: var(--font-pixel); font-weight: 600; text-align: center; line-height: 1.3;
+}
+.kuis__bubble::after {
+  content: ''; position: absolute; left: 50%; bottom: -14px; width: 20px; height: 20px;
+  background: var(--yellow); border-right: var(--border); border-bottom: var(--border);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ----- Soal ----- */
+.kuis__main { min-width: 0; animation: kuis-in 0.3s ease-out; }
+.kuis__meta { margin: 0 0 var(--space-2); font-family: var(--font-pixel); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: calc(var(--fs-body) * 0.8); color: var(--blue-deep); }
+.kuis__meta span { text-transform: none; letter-spacing: 0; color: var(--ink); opacity: 0.7; }
+.kuis__q { margin: 0 0 var(--space-4); font-size: var(--fs-lead); font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+
+/* ----- Pilihan jawaban ----- */
+.kuis__opts { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.kuis__opt {
+  width: 100%; display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4);
+  background: var(--paper); color: var(--ink); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm);
+  font: inherit; font-weight: 500; text-align: left; cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s;
+}
+.kuis__opt:hover[data-state='idle'] { background: var(--sky); transform: translateY(-2px); }
+.kuis__opt:focus-visible { outline: 3px dashed var(--blue); outline-offset: 3px; }
+.kuis__letter {
+  flex: none; display: grid; place-items: center; width: 2.2em; height: 2.2em;
+  background: var(--blue); color: var(--white); border: 3px solid var(--ink); border-radius: 8px;
+  font-family: var(--font-pixel); font-weight: 700;
+}
+.kuis__opt-text { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.kuis__opt[aria-disabled='true'] { cursor: default; }
+.kuis__opt[data-state='right'] { background: color-mix(in srgb, var(--green) 55%, var(--paper)); }
+.kuis__opt[data-state='right'] .kuis__letter { background: var(--green); color: var(--ink); }
+.kuis__opt[data-state='wrong'] { background: color-mix(in srgb, var(--blush) 60%, var(--paper)); animation: kuis-shake 0.35s; }
+.kuis__opt[data-state='wrong'] .kuis__letter { background: var(--red); }
+.kuis__opt[data-state='dim'] { opacity: 0.5; box-shadow: none; }
+
+/* ----- Umpan balik ----- */
+.kuis__fb { margin-top: var(--space-4); padding: var(--space-3) var(--space-4); border: var(--border); border-radius: var(--radius); animation: kuis-in 0.3s ease-out; }
+.kuis__fb p { margin: 0 0 var(--space-2); line-height: 1.4; }
+.kuis__fb p:last-child { margin-bottom: 0; }
+.kuis__fb.is-right { background: color-mix(in srgb, var(--green) 35%, var(--paper)); }
+.kuis__fb.is-wrong { background: color-mix(in srgb, var(--yellow) 35%, var(--paper)); }
+.kuis__fb-title { font-family: var(--font-pixel); font-weight: 700; font-size: var(--fs-lead); }
+
+.kuis__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-5); }
+.kuis__hint { margin: 0; font-size: calc(var(--fs-body) * 0.8); opacity: 0.7; }
+
+/* ----- Hasil ----- */
+.kuis__score { margin: 0 0 var(--space-2); font-family: var(--font-pixel); font-size: var(--fs-h2); line-height: 1.1; }
+.kuis__stars { display: flex; align-items: center; gap: var(--space-2); margin: 0 0 var(--space-4); font-family: var(--font-pixel); font-weight: 700; font-size: var(--fs-lead); }
+.kuis__stars span { margin-left: var(--space-3); }
+.kuis__review { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.kuis__review li { display: flex; gap: var(--space-3); align-items: center; padding: var(--space-2) var(--space-3); border: var(--border); border-radius: var(--radius); background: var(--paper); }
+.kuis__review li.is-right { background: color-mix(in srgb, var(--green) 30%, var(--paper)); }
+.kuis__review li.is-wrong { background: color-mix(in srgb, var(--blush) 40%, var(--paper)); }
+.kuis__review p { margin: 0; line-height: 1.3; }
+.kuis__review-a { font-size: 0.85em; margin-top: 2px !important; }
+
+@keyframes kuis-in { from { opacity: 0; transform: translateY(8px); } }
+@keyframes kuis-shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+@media (prefers-reduced-motion: reduce) {
+  .kuis__main, .kuis__fb, .kuis__opt[data-state='wrong'] { animation: none; }
+  .kuis__opt, .kuis__step { transition: none; }
+}

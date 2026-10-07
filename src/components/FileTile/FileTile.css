@@ -1,0 +1,30 @@
+/* src/components/FileTile/FileTile.css */
+.ftile { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; max-width: 130px; text-align: center; }
+.ftile__icon { position: relative; display: inline-flex; }
+.ftile__name {
+  max-width: 100%;
+  padding: 0 4px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ftile--unknown .ftile__name { background: var(--red); color: var(--white); }
+.ftile__q {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  background: var(--red);
+  color: var(--white);
+  border: 2px solid var(--ink);
+  font-family: var(--font-pixel);
+  font-size: 15px;
+  font-weight: 700;
+}

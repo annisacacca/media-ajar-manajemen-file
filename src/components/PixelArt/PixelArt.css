@@ -1,0 +1,19 @@
+/* src/components/PixelArt/PixelArt.css
+   Peta huruf -> warna. Warna diambil dari variabel di styles/global.css. */
+.pixel-art {
+  display: block;
+  shape-rendering: crispEdges; /* tepi kotak tajam, tidak buram */
+}
+.px-k { fill: var(--ink); }
+.px-w { fill: var(--white); }
+.px-c { fill: var(--cream); }
+.px-b { fill: var(--blue); }
+.px-l { fill: var(--sky); }
+.px-y { fill: var(--yellow); }
+.px-o { fill: var(--yellow-deep); }
+.px-r { fill: var(--red); }
+.px-g { fill: var(--green); }
+.px-d { fill: var(--green-deep); }
+.px-s { fill: var(--skin); }
+.px-p { fill: var(--blush); }
+.px-e { fill: var(--gray); }

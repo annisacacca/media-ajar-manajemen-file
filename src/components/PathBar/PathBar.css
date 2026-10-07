@@ -1,0 +1,12 @@
+/* src/components/PathBar/PathBar.css */
+.pathbar { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: var(--space-2) var(--space-3); background: var(--ice); border: 3px solid var(--ink); border-radius: 8px; font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.85); line-height: 1.2; }
+.pathbar__seg { padding: 0 8px; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 6px; font: inherit; transition: opacity 0.25s, transform 0.25s var(--ease-pop); }
+button.pathbar__seg { cursor: pointer; }
+button.pathbar__seg:hover { background: var(--yellow); }
+.pathbar__seg--drive { background: var(--blue); color: var(--white); }
+.pathbar__seg--folder { background: var(--yellow); }
+.pathbar__seg--file { background: var(--green); }
+.pathbar__sep { font-size: 1.1em; font-weight: 700; transition: opacity 0.25s; }
+/* Segmen yang belum "dibaca" (pembaca path) tampil pudar */
+.pathbar .is-off { opacity: 0.2; }
+.pathbar__seg.is-on { transform: none; }

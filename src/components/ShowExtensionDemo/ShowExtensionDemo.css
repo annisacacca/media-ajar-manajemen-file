@@ -1,0 +1,18 @@
+/* src/components/ShowExtensionDemo/ShowExtensionDemo.css */
+.sxd { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.sxd__steps { margin: 0; padding-left: 1.4em; display: grid; gap: var(--space-2); font-size: calc(var(--fs-body) * 0.85); }
+.sxd__steps li::marker { font-family: var(--font-pixel); font-weight: 700; color: var(--blue); }
+.sxd__explorer { overflow: hidden; background: var(--white); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm); }
+.sxd__bar { padding: 0.15em 0.8em; background: var(--blue); color: var(--white); font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.8); }
+.sxd__check { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--ice); border-bottom: 3px solid var(--ink); font-weight: 700; font-size: calc(var(--fs-body) * 0.85); cursor: pointer; }
+.sxd__check input { width: 1.2em; height: 1.2em; accent-color: var(--blue); }
+.sxd__list { margin: 0; padding: var(--space-2); list-style: none; }
+.sxd__row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: 8px; font-size: calc(var(--fs-body) * 0.8); transition: background 0.25s; }
+.sxd__name { font-family: var(--font-pixel); font-weight: 600; word-break: break-all; }
+.sxd__kind { font-size: 0.8em; color: var(--blue-deep); font-weight: 700; }
+.sxd__row.is-danger { background: color-mix(in srgb, var(--red) 25%, var(--paper)); animation: sxd-shake 0.4s; }
+.sxd__row.is-danger .sxd__kind { color: var(--red); }
+.sxd__msg { margin: 0; padding: var(--space-3) var(--space-4); background: var(--yellow); border-top: 3px solid var(--ink); font-size: calc(var(--fs-body) * 0.75); transition: background 0.25s; }
+.sxd__msg.is-on { background: color-mix(in srgb, var(--green) 40%, var(--paper)); }
+.sxd__tip { grid-column: 1 / -1; margin: 0; padding: var(--space-3) var(--space-4); background: var(--ice); border: 3px solid var(--ink); border-radius: 10px; font-size: calc(var(--fs-body) * 0.8); }
+@keyframes sxd-shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }

@@ -1,0 +1,35 @@
+/* src/components/Dika/Dika.css */
+.dika {
+  display: inline-block;
+  line-height: 0;
+  /* Idle: naik-turun 1 kotak, 2 frame saja supaya terasa pixel */
+  animation: dika-bob 1.8s steps(1, end) infinite;
+}
+.dika--still { animation: none; }
+
+/* Muncul "pop" setiap ekspresi berganti */
+.dika__art {
+  transform-origin: 50% 100%;
+  animation: dika-pop 0.4s steps(5, end);
+}
+
+/* Berkedip tiap ~4 detik */
+.dika__lid {
+  opacity: 0;
+  animation: dika-blink 4.2s steps(1, end) infinite;
+}
+
+@keyframes dika-bob {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-3%); }
+}
+@keyframes dika-pop {
+  0%   { transform: scale(0.86); }
+  60%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+@keyframes dika-blink {
+  0%   { opacity: 0; }
+  93%  { opacity: 1; }
+  97%  { opacity: 0; }
+}

@@ -1,0 +1,44 @@
+/* src/components/FolderTree/FolderTree.css
+   Pohon digambar dengan garis CSS: tiap anak punya garis tegak (::before) dan garis datar (::after).
+   Angka 28px / 48px / 20px di bawah saling terkait (posisi tengah ikon induk dan tinggi chip). */
+.ftree { padding: var(--space-3); overflow: auto; background: var(--white); border: 3px solid var(--ink); border-radius: var(--radius); }
+.ftree ul { margin: 0; padding: 0; list-style: none; }
+.ftree ul.ftree__children { padding-left: 48px; }
+.ftree__item { position: relative; padding: 5px 0; }
+
+/* Garis penghubung: hanya untuk anak, bukan akar */
+.ftree__children > .ftree__item::before { content: ''; position: absolute; left: -20px; top: 0; bottom: 0; border-left: 3px solid var(--ink); }
+.ftree__children > .ftree__item:last-child::before { bottom: auto; height: 26px; }
+.ftree__children > .ftree__item::after { content: ''; position: absolute; left: -20px; top: 25px; width: 20px; border-top: 3px solid var(--ink); }
+
+/* Kotak nama (chip) */
+.ftree__chip {
+  display: inline-flex; align-items: center; gap: var(--space-2); min-height: 42px; padding: 2px 12px 2px 8px;
+  background: var(--paper); color: var(--ink); border: 3px solid var(--ink); border-radius: 8px; box-shadow: 2px 2px 0 var(--ink);
+  font-family: var(--font-body); font-weight: 700; font-size: calc(var(--fs-body) * 0.78); line-height: 1.1; white-space: nowrap; text-align: left;
+  animation: ftree-in 0.35s var(--ease-pop) both; animation-delay: calc(var(--depth) * 70ms);
+}
+button.ftree__chip { cursor: pointer; transition: transform 0.08s steps(2, end), box-shadow 0.08s steps(2, end); }
+button.ftree__chip:hover { background: var(--yellow); }
+button.ftree__chip:active { transform: translate(2px, 2px); box-shadow: none; }
+.ftree__chip--drive { background: var(--blue); color: var(--white); }
+button.ftree__chip--drive:hover { background: var(--blue-deep); }
+.ftree__chip--folder { background: color-mix(in srgb, var(--yellow) 35%, var(--paper)); }
+.ftree__chip.is-path { background: var(--sky); }
+.ftree__chip--drive.is-path { background: var(--blue-deep); }
+.ftree__chip.is-self { background: var(--yellow); color: var(--ink); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+.ftree__chip.is-step { background: var(--green); color: var(--ink); }
+.ftree__chip.is-flash { animation: ftree-flash 0.9s steps(6) 1; }
+
+/* Label hubungan */
+.ftree__tag { padding: 0 8px; background: var(--white); color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; font-family: var(--font-pixel); font-size: 0.72em; font-weight: 600; }
+.ftree__tag--yellow { background: var(--yellow); }
+.ftree__tag--green { background: var(--green); }
+.ftree__tag--blue { background: var(--sky); }
+
+@keyframes ftree-in { from { opacity: 0; transform: translateY(-8px) scale(0.9); } }
+@keyframes ftree-flash {
+  0%, 100% { background: var(--yellow); }
+  33% { background: var(--white); }
+  66% { background: var(--green); }
+}

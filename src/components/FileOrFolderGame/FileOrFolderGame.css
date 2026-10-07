@@ -1,0 +1,16 @@
+/* src/components/FileOrFolderGame/FileOrFolderGame.css */
+.ffg { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); }
+.ffg__main { flex: 1 1 340px; min-width: 0; }
+.ffg__count { margin: 0 0 var(--space-2); font-family: var(--font-pixel); font-weight: 600; color: var(--blue-deep); }
+.ffg__item { padding: var(--space-4); margin-bottom: var(--space-4); text-align: center; background: var(--ice); border: var(--border); border-radius: var(--radius); }
+.ffg__name { font-family: var(--font-pixel); font-weight: 700; font-size: var(--fs-h2); word-break: break-all; }
+.ffg__choices { display: flex; gap: var(--space-4); margin-bottom: var(--space-4); }
+.ffg__choices .btn { flex: 1; justify-content: center; font-size: var(--fs-lead); }
+.ffg__choices .btn.is-right { --btn-bg: var(--green); }
+
+.ffg__result { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); border: var(--border); border-radius: var(--radius); animation: ffg-pop 0.35s var(--ease-pop); }
+.ffg__result p { flex: 1 1 200px; margin: 0; }
+.ffg__result.is-ok { background: color-mix(in srgb, var(--green) 30%, var(--paper)); }
+.ffg__result.is-bad { background: color-mix(in srgb, var(--yellow) 55%, var(--paper)); }
+.ffg--end h3 { font-size: var(--fs-h2); }
+@keyframes ffg-pop { from { transform: scale(0.94); opacity: 0; } }

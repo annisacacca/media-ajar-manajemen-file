@@ -1,0 +1,35 @@
+/* src/components/Shell/Shell.css */
+.shell { display: flex; flex-direction: column; height: 100dvh; min-height: 0; }
+
+/* ----- Bilah atas (mode guru) ----- */
+.shell__bar { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) var(--space-4) 0; }
+.shell__chip { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-3); background: rgba(255, 250, 241, 0.92); border: var(--border); border-radius: 999px; box-shadow: var(--shadow-hard-sm); }
+.shell__title { margin: 0; font-family: var(--font-pixel); font-weight: 700; font-size: calc(var(--fs-body) * 0.9); white-space: nowrap; }
+.shell__count { padding: 0 0.7em; background: var(--yellow); border: 2px solid var(--ink); border-radius: 999px; font-family: var(--font-pixel); font-weight: 700; font-size: calc(var(--fs-body) * 0.8); }
+.shell__btn { flex: none; gap: var(--space-2); padding: 0.2em 0.6em; font-size: calc(var(--fs-body) * 0.8); box-shadow: none; }
+@media (max-width: 760px) { .shell__label, .shell__title { display: none; } }
+
+/* ----- Dock bawah: ikon semua bagian, seperti dock desktop ----- */
+.shell__dockwrap { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: 0 var(--space-4) var(--space-3); }
+.shell__now { margin: 0; padding: 0 var(--space-4); background: var(--ink); color: var(--ice); border-radius: 999px; font-family: var(--font-pixel); font-size: calc(var(--fs-body) * 0.8); }
+.shell__dock { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: rgba(255, 250, 241, 0.92); border: var(--border); border-radius: 28px; box-shadow: var(--shadow-hard-sm); }
+.dock__btn { display: grid; place-items: center; width: 3rem; height: 3rem; background: var(--sky); border: 3px solid transparent; border-radius: 16px; cursor: pointer; transition: transform 0.15s var(--ease-pop), background-color 0.15s; }
+.dock__btn:hover { transform: translateY(-6px) scale(1.12); }
+.dock__btn.is-seen { background: var(--blush); }
+.dock__btn.is-locked { opacity: 0.55; }
+.dock__btn[aria-current='step'] { background: var(--yellow); border-color: var(--ink); transform: translateY(-4px); }
+
+/* ----- Badan: daftar samping + isi ----- */
+.shell__body { position: relative; display: flex; flex: 1; min-height: 0; }
+
+.shell__main { flex: 1; min-width: 0; padding: var(--space-5); overflow-x: hidden; overflow-y: auto; }
+@media (min-width: 1100px) { .shell__main { padding: var(--space-5) var(--space-6); } }
+
+.shell__backdrop { position: absolute; z-index: 5; inset: 0; display: block; border: 0; background: rgba(74, 49, 66, 0.4); cursor: pointer; }
+
+/* ----- Transisi antarbagian: halaman masuk dari arah gerak ----- */
+.shell__page { max-width: 1400px; margin: 0 auto; animation: page-in-right 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.shell__page.from-left { animation-name: page-in-left; }
+
+@keyframes page-in-right { from { opacity: 0; transform: translateX(56px); } }
+@keyframes page-in-left  { from { opacity: 0; transform: translateX(-56px); } }

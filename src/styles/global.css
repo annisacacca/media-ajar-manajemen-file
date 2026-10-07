@@ -1,0 +1,162 @@
+/* src/styles/global.css
+   Satu-satunya tempat font, warna, dan aturan dasar didefinisikan.
+   CATATAN: font Google Fonts butuh internet. Kalau offline, otomatis
+   memakai font cadangan (monospace / system-ui) dan tampilan tetap berfungsi.
+
+   TAHAP 2: palet diganti ke nuansa "biru Y2K" (biru langit, putih glossy,
+   kuning mentega, pink). NAMA variabel sengaja dipertahankan supaya file
+   Tahap 1 lainnya tidak perlu diubah; yang berganti hanya nilainya. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Pixelify+Sans:wght@400..700&display=swap');
+
+:root {
+  /* --- Palet utama biru Y2K --- */
+  --blue: #5B67D6;       /* biru layar (elektrik) */
+  --yellow: #FFC857;     /* kuning mentega */
+  --red: #E04A80;        /* pink-merah, untuk tombol aksi penting */
+  --green: #6FD3A8;      /* hijau mint */
+  --ice: #FFF3DF;        /* biru es, pengganti krem */
+  --ink: #4A3142;        /* biru tinta: teks dan outline */
+
+  /* --- Turunan --- */
+  --cream: var(--ice);   /* nama lama dipertahankan (dipakai file Tahap 1) */
+  --white: #ffffff;
+  --paper: #FFFAF1;
+  --sky: #DCE0FB;
+  --sky-deep: #B5BCF2;
+  --blue-deep: #3C46A5;
+  --yellow-deep: #E9992E;
+  --green-deep: #2E9873;
+  --gray: #DCCFC6;
+  --skin: #f5bc93;
+  --blush: #FF9DBB;
+
+  /* --- Kilap ala Y2K: lapisan putih tipis di bagian atas elemen --- */
+  --gloss: radial-gradient(ellipse 70% 38% at 50% 14%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 100%);
+
+  /* --- Font --- */
+  --font-pixel: 'Pixelify Sans', 'Courier New', monospace;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* --- Ukuran teks (membesar mengikuti lebar layar) ---
+     Di layar proyektor (lebar >= 1200px) teks isi minimal 22px. */
+  --fs-body: clamp(1.0625rem, 0.875rem + 0.7vw, 1.75rem);
+  --fs-lead: calc(var(--fs-body) * 1.25);
+  --fs-h2: clamp(1.5rem, 1rem + 1.6vw, 2.75rem);
+  --fs-h1: clamp(2rem, 1rem + 3.4vw, 4.5rem);
+
+  /* --- Jarak, garis, bayangan --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.5rem;
+  --border: 3px solid var(--ink);
+  --radius: 20px;
+  --shadow-hard: 0 7px 0 var(--sky-deep), 0 14px 28px rgba(74, 49, 66, 0.14); /* bayangan keras tanpa blur */
+  --shadow-hard-sm: 0 4px 0 rgba(74, 49, 66, 0.28);
+  --ease-pop: cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --border: 3px solid var(--ink);
+    --shadow-hard: 0 5px 0 var(--sky-deep);
+    --shadow-hard-sm: 0 3px 0 rgba(74, 49, 66, 0.28);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--ice);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-pixel); line-height: 1.15; margin: 0 0 var(--space-3); }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+p { margin: 0 0 var(--space-4); }
+
+button { font: inherit; color: inherit; }
+
+/* Fokus keyboard harus kelihatan jelas (penting saat navigasi pakai panah/tab) */
+:focus-visible {
+  outline: 4px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* ---------- Latar "ilustrasi flat" ala Y2K: langit gradasi + kisi putih + kilau ---------- */
+.stage {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  /* Latar pastel ala "desktop rice": gelembung madu, lavender, pink + titik-titik halus */
+  background:
+    radial-gradient(circle at 1px 1px, rgba(74, 49, 66, 0.10) 1.4px, transparent 1.6px) 0 0 / 26px 26px,
+    radial-gradient(ellipse 42% 38% at 8% 6%, rgba(255, 200, 87, 0.55), transparent 70%),
+    radial-gradient(ellipse 38% 36% at 94% 14%, rgba(181, 188, 242, 0.75), transparent 70%),
+    radial-gradient(ellipse 40% 40% at 78% 96%, rgba(255, 157, 187, 0.45), transparent 70%),
+    radial-gradient(ellipse 36% 34% at 4% 92%, rgba(111, 211, 168, 0.30), transparent 70%),
+    var(--ice);
+}
+
+/* ---------- Tombol pixel ---------- */
+.btn {
+  --btn-bg: var(--yellow);
+  --btn-fg: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0.55em 1.2em;
+  background-color: var(--btn-bg);
+  background-image: var(--gloss);
+  color: var(--btn-fg);
+  border: var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-hard-sm);
+  font-family: var(--font-pixel);
+  font-weight: 600;
+  font-size: var(--fs-body);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(74, 49, 66, 0.28); }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(74, 49, 66, 0.28); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: var(--shadow-hard-sm); }
+.btn--blue  { --btn-bg: var(--blue);  --btn-fg: var(--white); }
+.btn--red   { --btn-bg: var(--red);   --btn-fg: var(--white); }
+.btn--green { --btn-bg: var(--green); --btn-fg: var(--ink); }
+.btn--paper { --btn-bg: var(--paper); }
+.btn[aria-pressed='true'] { --btn-bg: var(--blue); --btn-fg: var(--white); }
+
+/* Teks untuk pembaca layar saja */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Hormati pengguna yang mematikan animasi ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Pita bergelombang (judul bagian) & stiker putih ala referensi ---------- */
+.sticker-white { filter: drop-shadow(0 0 0 #fff) drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 4px 6px rgba(74, 49, 66, 0.25)); }

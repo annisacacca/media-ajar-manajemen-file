@@ -1,0 +1,48 @@
+/* src/components/RetroWindow/RetroWindow.css */
+.win {
+  --win-bar: var(--sky-deep);
+  --win-bar-text: var(--ink);
+  background: var(--paper);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+  min-width: 0;
+  background-image: linear-gradient(180deg, #fff 0, var(--paper) 100%);
+}
+.win--yellow { --win-bar: var(--yellow); --win-bar-text: var(--ink); }
+.win--red    { --win-bar: var(--blush);  --win-bar-text: var(--ink); }
+.win--green  { --win-bar: var(--green);  --win-bar-text: var(--ink); }
+
+.win__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--win-bar);
+  color: var(--win-bar-text);
+  border-bottom: var(--border);
+  background-image: var(--gloss);
+  border-radius: 0;
+}
+.win__icon { display: flex; flex: none; }
+.win__title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-pixel);
+  font-size: calc(var(--fs-body) * 0.95);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.win__btns { display: flex; gap: 6px; flex: none; }
+.win__btns i {
+  width: 0.85em;
+  height: 0.85em;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: #fff;
+}
+.win__btns i:nth-child(2) { background: var(--yellow); }
+.win__btns i:nth-child(3) { background: var(--red); }
+
+.win__body { padding: var(--space-5); }

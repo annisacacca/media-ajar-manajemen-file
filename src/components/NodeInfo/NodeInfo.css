@@ -1,0 +1,10 @@
+/* src/components/NodeInfo/NodeInfo.css */
+.ninfo { display: grid; gap: var(--space-3); padding: var(--space-3); background: var(--paper); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm); }
+.ninfo__row { display: flex; align-items: center; gap: var(--space-3); }
+.ninfo__text { flex: 1; min-width: 0; font-size: calc(var(--fs-body) * 0.8); line-height: 1.35; animation: ninfo-in 0.3s ease-out; }
+.ninfo__text p { margin: 0 0 var(--space-2); }
+.ninfo__text p:last-child { margin-bottom: 0; }
+.ninfo__meta { font-size: 0.85em; color: var(--blue-deep); }
+.ninfo--empty { grid-auto-flow: column; align-items: center; justify-content: start; gap: var(--space-3); font-size: calc(var(--fs-body) * 0.8); }
+.ninfo--empty p { margin: 0; }
+@keyframes ninfo-in { from { opacity: 0; transform: translateX(-8px); } }

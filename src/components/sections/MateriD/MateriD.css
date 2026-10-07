@@ -1,0 +1,11 @@
+/* src/components/sections/MateriD/MateriD.css */
+.materi-d__anatomy { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); margin-bottom: var(--space-5); }
+.materi-d__good { display: grid; gap: var(--space-4); }
+.materi-d__habits { display: grid; gap: var(--space-2); margin: 0; padding-left: 1.3em; font-size: calc(var(--fs-body) * 0.9); }
+.materi-d__intro { margin: 0 0 var(--space-4); font-size: calc(var(--fs-body) * 0.95); }
+.materi-d__formats { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.materi-d__examples { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.materi-d__note { margin: var(--space-4) 0 0; padding: var(--space-3) var(--space-4); background: var(--yellow); border: 3px solid var(--ink); border-radius: 10px; font-size: calc(var(--fs-body) * 0.85); }
+.materi-d__causes { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); margin: 0; padding: 0; list-style: none; counter-reset: sebab; }
+.materi-d__causes li { counter-increment: sebab; position: relative; }
+.materi-d__causes li::before { content: counter(sebab); position: absolute; z-index: 1; top: -10px; right: 10px; display: grid; place-items: center; width: 2em; height: 2em; background: var(--ink); color: var(--white); border-radius: 50%; font-family: var(--font-pixel); font-weight: 700; }

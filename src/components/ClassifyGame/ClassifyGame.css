@@ -1,0 +1,28 @@
+/* src/components/ClassifyGame/ClassifyGame.css */
+.clg { display: grid; gap: var(--space-4); }
+.clg__top { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+.clg__msg { flex: 1 1 260px; margin: 0; font-family: var(--font-pixel); font-weight: 600; font-size: var(--fs-body); }
+
+.clg__pool { display: flex; flex-wrap: wrap; gap: var(--space-3); min-height: 110px; padding: var(--space-4); background: var(--ice); border: var(--border); border-radius: var(--radius); }
+.clg__empty { margin: auto; font-family: var(--font-pixel); color: var(--blue-deep); }
+.clg__chip { padding: var(--space-2) var(--space-3); background: var(--white); border: 3px solid var(--ink); border-radius: 10px; box-shadow: var(--shadow-hard-sm); cursor: grab; transition: transform 0.12s; }
+.clg__chip:hover { transform: translateY(-3px); }
+.clg__chip:active { cursor: grabbing; }
+.clg__chip.is-selected { background: var(--yellow); transform: translateY(-3px) scale(1.05); }
+.clg__chip .ftile__name { font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.7); background: none; }
+
+.clg__zones { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+.clg__zone { --tone: var(--blue); position: relative; min-height: 150px; padding: 0; background: var(--paper); border: var(--border); border-top: 14px solid var(--tone); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm); transition: background 0.15s, transform 0.15s; }
+.clg__zone--green { --tone: var(--green); }
+.clg__zone--yellow { --tone: var(--yellow); }
+.clg__zone--red { --tone: var(--red); }
+.clg__zone.is-ready { cursor: pointer; }
+.clg__zone.is-over { background: var(--yellow); transform: scale(1.03); }
+.clg__zone-in { display: block; padding: var(--space-3); }
+.clg__zone-head { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); font-family: var(--font-pixel); font-size: calc(var(--fs-body) * 0.85); }
+.clg__zone-items { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.clg__placed { animation: clg-drop 0.4s var(--ease-pop); }
+.clg__placed .ftile__name { font-size: calc(var(--fs-body) * 0.6); }
+.clg__zone-in.is-shake { animation: clg-shake 0.4s; }
+@keyframes clg-shake { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+@keyframes clg-drop { from { transform: translateY(-20px) scale(0.6); opacity: 0; } }

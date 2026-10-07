@@ -1,0 +1,38 @@
+/* src/components/sections/PenutupSection/PenutupSection.css */
+.penutup__head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); }
+.penutup__head > div { flex: 1 1 320px; min-width: 0; }
+.penutup__title { margin: 0 0 var(--space-2); }
+.penutup__lead { margin: 0; font-size: calc(var(--fs-body) * 0.95); font-weight: 500; }
+.penutup__note { margin: 0 0 var(--space-4); font-size: calc(var(--fs-body) * 0.9); font-weight: 500; }
+
+/* Kesimpulan */
+.penutup__cards { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+
+/* Refleksi */
+.penutup__qs { display: grid; gap: var(--space-4); margin: 0; padding: 0; list-style: none; counter-reset: q; }
+.penutup__q { counter-increment: q; position: relative; padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) + 3.2rem); background: var(--paper); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm); }
+.penutup__q::before { content: counter(q); position: absolute; left: var(--space-4); top: var(--space-4); display: grid; place-items: center; width: 2.4rem; height: 2.4rem; background: var(--yellow); border: 3px solid var(--ink); border-radius: 50%; font-family: var(--font-pixel); font-weight: 700; }
+.penutup__q-text { margin: 0 0 var(--space-3); font-weight: 700; line-height: 1.4; }
+.penutup__q-btn { font-size: calc(var(--fs-body) * 0.75); }
+.penutup__hint { margin: var(--space-3) 0 0; padding: var(--space-2) var(--space-3); background: var(--ice); border: 3px solid var(--ink); border-radius: 10px; font-size: calc(var(--fs-body) * 0.85); animation: hint-in 0.3s var(--ease-pop); }
+@keyframes hint-in { from { opacity: 0; transform: translateY(6px); } }
+
+/* Tindak lanjut */
+.penutup__habits { display: grid; gap: var(--space-3); margin: 0 0 var(--space-4); padding: 0; list-style: none; }
+.penutup__habit { display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-3) var(--space-4); text-align: left; background: var(--paper); border: var(--border); border-radius: 14px; box-shadow: var(--shadow-hard-sm); cursor: pointer; font-size: calc(var(--fs-body) * 0.9); line-height: 1.35; transition: transform 0.12s ease, background 0.12s ease; }
+.penutup__habit:hover { transform: translateY(-2px); }
+.penutup__habit[data-on='true'] { background: var(--green); }
+.penutup__box { flex: none; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; background: var(--white); border: 3px solid var(--ink); border-radius: 8px; }
+.penutup__meter { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.penutup__count { padding: 0.15em 0.9em; background: var(--yellow); border: 3px solid var(--ink); border-radius: 999px; font-family: var(--font-pixel); font-weight: 600; }
+.penutup__mascot { position: relative; }
+
+/* Pembuat */
+.penutup__maker { display: flex; flex-wrap: wrap-reverse; align-items: center; justify-content: center; gap: var(--space-5); }
+.penutup__maker-card { flex: 1 1 320px; min-width: 0; padding: var(--space-5); background: var(--paper); border: var(--border); border-top: 12px solid var(--green); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm); }
+.penutup__maker-label { margin: 0 0 var(--space-2); font-size: calc(var(--fs-body) * 0.85); font-weight: 500; }
+.penutup__maker-name { margin: 0 0 var(--space-4); font-size: var(--fs-h2); overflow-wrap: anywhere; }
+.penutup__links { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.penutup__links .btn { text-decoration: none; font-size: calc(var(--fs-body) * 0.85); }
+
+.penutup__end { display: flex; justify-content: flex-end; margin-top: var(--space-5); }

@@ -1,0 +1,21 @@
+/* src/components/CopyMoveDemo/CopyMoveDemo.css */
+.cmd { display: grid; gap: var(--space-4); }
+.cmd__controls { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.cmd__controls .btn { font-size: calc(var(--fs-body) * 0.85); }
+.cmd__arena { position: relative; display: grid; grid-template-columns: 1fr 70px 1fr; align-items: center; gap: var(--space-2); padding: var(--space-4); background: var(--ice); border: var(--border); border-radius: var(--radius); }
+.cmd__box { background: var(--paper); border: 3px solid var(--ink); border-radius: 10px; }
+.cmd__label { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--yellow); border-bottom: 3px solid var(--ink); border-radius: 7px 7px 0 0; font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.8); }
+.cmd__slot { display: grid; place-items: center; min-height: 130px; padding: var(--space-3); }
+.cmd__gone { color: var(--gray); font-family: var(--font-pixel); }
+.cmd__arrow { text-align: center; font-family: var(--font-pixel); font-size: var(--fs-h2); }
+/* File terbang: dari kotak asal (kiri) ke kotak tujuan (kanan) */
+.cmd__ghost { position: absolute; top: 50%; left: calc(var(--space-4) + 18%); z-index: 3; margin-top: -10px; animation: cmd-fly 1s ease-in-out forwards; pointer-events: none; }
+@keyframes cmd-fly {
+  0% { left: calc(var(--space-4) + 14%); transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-110%) scale(1.15) rotate(-6deg); }
+  100% { left: calc(100% - var(--space-4) - 32%); transform: translateY(-50%) scale(1); }
+}
+.cmd__arrive { animation: cmd-arrive 0.4s var(--ease-pop); }
+@keyframes cmd-arrive { from { transform: scale(0.5); opacity: 0; } }
+.cmd__result { display: flex; align-items: center; gap: var(--space-4); }
+.cmd__result p { margin: 0; font-size: calc(var(--fs-body) * 0.9); font-weight: 500; }

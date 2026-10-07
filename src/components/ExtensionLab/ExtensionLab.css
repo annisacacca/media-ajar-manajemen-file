@@ -1,0 +1,37 @@
+/* src/components/ExtensionLab/ExtensionLab.css */
+.xlab { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.xlab__col { min-width: 0; }
+.xlab__switch { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+.xlab__switch .btn { font-size: calc(var(--fs-body) * 0.75); }
+
+.xlab__stage { display: flex; align-items: center; justify-content: space-around; gap: var(--space-3); padding: var(--space-4); margin-bottom: var(--space-4); background: var(--ice); border: var(--border); border-radius: var(--radius); }
+.xlab__file { animation: xlab-pop 0.4s var(--ease-pop); }
+.xlab__file .ftile { max-width: 220px; }
+.xlab__file .ftile__name { font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.75); background: var(--white); border: 2px solid var(--ink); }
+@keyframes xlab-pop { from { transform: scale(0.8) rotate(-4deg); opacity: 0.4; } }
+
+.xlab__label { margin: 0 0 var(--space-2); font-family: var(--font-pixel); font-weight: 600; }
+.xlab__presets { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-3); }
+.xlab__presets .btn { font-size: calc(var(--fs-body) * 0.8); padding: 0.3em 0.9em; }
+.xlab__custom { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3); font-size: calc(var(--fs-body) * 0.85); }
+.xlab__custom input { width: 8em; padding: 0.2em 0.6em; background: var(--paper); border: var(--border); border-radius: 10px; font-family: var(--font-pixel); font-size: var(--fs-body); }
+
+.xlab__facts { display: grid; gap: var(--space-3); margin: 0 0 var(--space-4); }
+.xlab__fact { padding: var(--space-3) var(--space-4); background: var(--paper); border: 3px solid var(--ink); border-radius: 10px; }
+.xlab__fact dt { font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.75); color: var(--blue-deep); }
+.xlab__fact dd { margin: var(--space-1) 0 0; font-size: calc(var(--fs-body) * 0.85); }
+.xlab__real { display: flex; align-items: center; gap: var(--space-3); }
+.xlab__bad { color: var(--red); font-weight: 700; }
+
+.xlab__pic { width: 72px; height: 54px; border: 3px solid var(--ink); background: var(--white); }
+.xlab__lines { display: grid; gap: 5px; width: 90px; padding: 8px; background: var(--white); border: 3px solid var(--ink); }
+.xlab__lines span { display: block; height: 5px; background: var(--gray); }
+
+.xlab__open { margin-bottom: var(--space-4); }
+.xlab__win { overflow: hidden; margin-bottom: var(--space-4); background: var(--white); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm); animation: xlab-pop 0.35s var(--ease-pop); }
+.xlab__bar { padding: 0.15em 0.8em; background: var(--blue); color: var(--white); font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.8); }
+.xlab__win--mismatch .xlab__bar, .xlab__win--noapp .xlab__bar { background: var(--red); }
+.xlab__body { padding: var(--space-3) var(--space-4); font-size: calc(var(--fs-body) * 0.85); }
+.xlab__body p { margin: 0; }
+.xlab__body .xlab__lines, .xlab__body .xlab__pic { margin: 0 auto; }
+.xlab__important { margin: 0; padding: var(--space-3) var(--space-4); background: var(--yellow); border: 3px solid var(--ink); border-radius: 10px; font-size: calc(var(--fs-body) * 0.8); }

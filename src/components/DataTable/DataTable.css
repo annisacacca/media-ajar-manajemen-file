@@ -1,0 +1,7 @@
+/* src/components/DataTable/DataTable.css */
+.dtable { overflow-x: auto; border: var(--border); border-radius: var(--radius); background: var(--white); }
+.dtable table { width: 100%; border-collapse: collapse; font-size: calc(var(--fs-body) * 0.85); }
+.dtable th, .dtable td { padding: var(--space-2) var(--space-4); text-align: left; vertical-align: top; border-bottom: 2px solid var(--gray); }
+.dtable thead th { background: var(--blue); color: var(--white); font-family: var(--font-pixel); border-bottom: var(--border); }
+.dtable tbody th { font-family: var(--font-pixel); background: var(--ice); white-space: nowrap; }
+.dtable tbody tr:last-child th, .dtable tbody tr:last-child td { border-bottom: 0; }

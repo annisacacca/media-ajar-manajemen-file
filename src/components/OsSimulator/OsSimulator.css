@@ -1,0 +1,77 @@
+/* src/components/OsSimulator/OsSimulator.css */
+.ossim { display: grid; gap: var(--space-5); }
+@media (min-width: 1000px) { .ossim { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
+
+/* ----- Lapisan ----- */
+.oslayer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 4.5rem;
+  padding: var(--space-2) var(--space-3);
+  background: var(--paper);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard-sm);
+  transition: background-color 0.2s, transform 0.2s;
+}
+.oslayer--user { background: var(--ice); }
+.oslayer--explorer { background: color-mix(in srgb, var(--sky) 55%, var(--paper)); }
+.oslayer--os { background: color-mix(in srgb, var(--blue) 22%, var(--paper)); }
+.oslayer--storage { background: color-mix(in srgb, var(--green) 22%, var(--paper)); }
+.oslayer.is-active { background: var(--yellow); transform: translate(-2px, -2px); }
+
+.oslayer__icon { display: flex; flex: none; }
+.oslayer__text { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; font-size: calc(var(--fs-body) * 0.8); }
+.oslayer__text strong { font-family: var(--font-pixel); font-size: calc(var(--fs-body) * 0.95); }
+
+/* "Paket perintah" yang muncul di lapis yang sedang dilewati */
+.oslayer__chip {
+  position: absolute;
+  right: var(--space-3);
+  top: -0.9em;
+  z-index: 2;
+  max-width: 80%;
+  margin: 0;
+  padding: 0.1em 0.7em;
+  background: var(--red);
+  color: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  font-family: var(--font-pixel);
+  font-size: calc(var(--fs-body) * 0.75);
+  line-height: 1.3;
+  animation: chip-pop 0.35s var(--ease-pop);
+}
+@keyframes chip-pop { from { transform: translateY(-14px) scale(0.85); opacity: 0; } }
+
+/* Panah antarlapis */
+.oslink { display: flex; justify-content: center; height: 34px; align-items: center; }
+.oslink.is-flow svg { animation: link-drop 0.5s steps(4, end); }
+@keyframes link-drop { from { transform: translateY(-16px); } }
+
+/* ----- Blok penyimpanan ----- */
+.blocks { display: grid; grid-template-columns: repeat(16, 1fr); gap: 3px; margin-top: var(--space-2); padding: 5px; background: var(--ink); border-radius: 6px; }
+.blocks__b { aspect-ratio: 1; background: var(--gray); transition: background-color 0.3s; }
+.blocks__b.is-free { background: var(--blue-deep); }
+.blocks__b.own-f1 { background: var(--yellow); }
+.blocks__b.own-f2 { background: var(--red); }
+.blocks__b.own-f3 { background: var(--green); }
+.blocks__b.is-freed { animation: blink 0.4s steps(2, end) 3; }
+@keyframes blink { 50% { background: var(--white); } }
+
+/* ----- Kanan ----- */
+.ossim__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.ossim__btn { padding: 0.3em 0.9em; font-size: calc(var(--fs-body) * 0.85); }
+.ossim__hint { min-height: 1.6em; margin: var(--space-3) 0 var(--space-4); font-weight: 500; font-size: calc(var(--fs-body) * 0.85); }
+.ossim__title { font-size: calc(var(--fs-body) * 1.05); margin-bottom: var(--space-2); }
+.ossim__tablewrap { overflow-x: auto; border: var(--border); border-radius: var(--radius); background: var(--white); }
+.ostable { width: 100%; border-collapse: collapse; font-size: calc(var(--fs-body) * 0.78); }
+.ostable th, .ostable td { padding: var(--space-2) var(--space-3); text-align: left; border-bottom: 2px solid var(--gray); }
+.ostable thead th { background: var(--blue); color: var(--white); font-family: var(--font-pixel); }
+.ostable tbody th { font-weight: 700; }
+.ostable tbody tr:last-child > * { border-bottom: 0; }
+.ostable tr.is-changed > * { animation: row-flash 1.6s ease-out; }
+@keyframes row-flash { 0%, 40% { background: var(--yellow); } }
+.ossim__note { margin: var(--space-2) 0 0; font-size: calc(var(--fs-body) * 0.65); opacity: 0.8; }

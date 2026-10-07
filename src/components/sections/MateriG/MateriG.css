@@ -1,0 +1,13 @@
+/* src/components/sections/MateriG/MateriG.css */
+.materi-g__split { display: grid; gap: var(--space-5); grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; }
+.materi-g__side { display: grid; gap: var(--space-4); min-width: 0; }
+.materi-g__principles { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.materi-g__intro { margin: 0 0 var(--space-4); font-size: calc(var(--fs-body) * 0.85); }
+.materi-g__tablabel { display: inline-flex; align-items: center; gap: var(--space-2); }
+.materi-g__locked { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-5); padding: var(--space-5) 0; }
+.materi-g__locked h3 { font-size: var(--fs-lead); }
+.materi-g__locked p { max-width: 28em; font-size: calc(var(--fs-body) * 0.85); }
+
+@media (max-width: 1000px) {
+  .materi-g__split { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,14 @@
+/* src/components/sections/PlaceholderSection/PlaceholderSection.css */
+.ph { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); }
+.ph > div { flex: 1 1 320px; min-width: 0; }
+.ph__badge {
+  display: inline-block;
+  margin: 0;
+  padding: 0.15em 0.8em;
+  background: var(--yellow);
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  font-family: var(--font-pixel);
+  font-weight: 600;
+  font-size: calc(var(--fs-body) * 0.85);
+}

@@ -1,0 +1,66 @@
+/* src/components/Tabs/Tabs.css  —  "Jalur langkah" */
+.steps { display: grid; grid-template-columns: minmax(150px, 22%) 1fr; gap: var(--space-5); align-items: start; }
+
+/* ---------- Jalur di kiri ---------- */
+.steps__rail { display: flex; flex-direction: column; gap: var(--space-3); position: relative; padding-left: 2px; }
+/* garis penghubung antar nomor */
+.steps__rail::before {
+  content: ''; position: absolute; left: calc(1.2em + 2px); top: 1.2em; bottom: 1.2em;
+  width: 4px; background: var(--sky-deep); border-radius: 2px; transform: translateX(-50%);
+}
+.steps__item {
+  display: flex; align-items: center; gap: var(--space-3);
+  position: relative; z-index: 1;
+  padding: 0; background: none; border: 0; text-align: left; cursor: pointer;
+  font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.85);
+  color: var(--ink); line-height: 1.15;
+}
+.steps__node {
+  flex: none; width: 2.4em; height: 2.4em; display: grid; place-items: center;
+  background: var(--white); border: var(--border); border-radius: 50%;
+  box-shadow: var(--shadow-hard-sm); transition: transform 0.2s var(--ease-pop), background 0.2s;
+}
+.steps__label { padding: 0.2em 0; opacity: 0.75; }
+.steps__item:hover .steps__node { transform: scale(1.1); background: var(--sky); }
+.steps__item[data-state='done'] .steps__node { background: var(--green); }
+.steps__item[data-state='active'] .steps__node { background: var(--yellow); transform: scale(1.15); }
+.steps__item[data-state='active'] .steps__label { opacity: 1; text-decoration: underline 3px var(--yellow-deep); text-underline-offset: 5px; }
+.steps__item:focus-visible { outline: 3px dashed var(--blue); outline-offset: 4px; border-radius: 999px; }
+
+/* ---------- Isi di kanan ---------- */
+.steps__main { min-width: 0; }
+.steps__meter { height: 10px; background: var(--white); border: var(--border); border-radius: 999px; overflow: hidden; margin-bottom: var(--space-4); }
+.steps__meter-fill { display: block; height: 100%; background: var(--yellow); border-right: 3px solid var(--ink); transition: width 0.35s ease-out; }
+.steps__panel {
+  padding: var(--space-5); background: var(--white);
+  border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard);
+  animation: step-in 0.3s ease-out;
+}
+@keyframes step-in { from { opacity: 0; transform: translateX(12px); } }
+
+.steps__nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-5); }
+.steps__count { font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.85); }
+.steps__btn {
+  padding: 0.35em 1em; background: var(--ice); border: var(--border); border-radius: 999px;
+  font-family: var(--font-pixel); font-weight: 600; font-size: calc(var(--fs-body) * 0.85); color: var(--ink);
+  box-shadow: var(--shadow-hard-sm); cursor: pointer; transition: transform 0.15s, background 0.15s;
+}
+.steps__btn:hover:not(:disabled) { background: var(--sky); transform: translateY(-2px); }
+.steps__btn--next { background: var(--yellow); }
+.steps__btn--next:hover:not(:disabled) { background: var(--yellow-deep); }
+.steps__btn:disabled { opacity: 0.35; cursor: default; box-shadow: none; }
+.steps__btn:focus-visible { outline: 3px dashed var(--blue); outline-offset: 3px; }
+
+/* ---------- Layar sempit: jalur jadi baris di atas ---------- */
+@media (max-width: 760px) {
+  .steps { grid-template-columns: 1fr; gap: var(--space-4); }
+  .steps__rail { flex-direction: row; justify-content: space-between; gap: var(--space-2); }
+  .steps__rail::before { left: 1.2em; right: 1.2em; top: 1.2em; bottom: auto; width: auto; height: 4px; transform: translateY(-50%); }
+  .steps__item { flex-direction: column; gap: var(--space-1); text-align: center; flex: 1; }
+  .steps__label { font-size: 0.7em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steps__panel { animation: none; }
+  .steps__node, .steps__meter-fill, .steps__btn { transition: none; }
+}
